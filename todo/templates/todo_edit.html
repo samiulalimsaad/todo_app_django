@@ -1,0 +1,81 @@
+{% extends 'base.html' %} {% block content %}
+<div class="sm:w-3/4 mx-auto grid place-items-center h-[93vh]">
+    <form
+        action="{% url 'todo_edit' todo.id%}"
+        method="POST"
+        class="sm:w-3/4 space-y-4"
+    >
+        {% csrf_token %}
+        <div class="form-control w-full">
+            <label class="input-group w-full">
+                <span class="bg-slate-200 w-1/4">Id</span>
+                <input
+                    value="{{todo.id}}"
+                    name="id"
+                    disabled
+                    class="input input-bordered bg-slate-100 w-3/4"
+                />
+            </label>
+        </div>
+        <div class="form-control w-full">
+            <label class="input-group w-full">
+                <span class="bg-slate-200 w-1/4">Title</span>
+                <input
+                    value="{{todo.title}}"
+                    name="title"
+                    class="input input-bordered bg-slate-100 w-3/4"
+                />
+            </label>
+        </div>
+        <div class="form-control w-full">
+            <label class="input-group w-full">
+                <span class="bg-slate-200 w-1/4">Description</span>
+                <input
+                    value="{{todo.description}}"
+                    name="description"
+                    class="input input-bordered bg-slate-100 w-3/4"
+                />
+            </label>
+        </div>
+        <div class="form-control w-full">
+            <label class="input-group w-full">
+                <span class="bg-slate-200 w-1/4">Due Date</span>
+                <input
+                    type="datetime-local"
+                    value="{{ todo.due_date|date:'Y-m-d' }}T{{ todo.due_date|time:'H:i' }}"
+                    name="due_date"
+                    class="input input-bordered bg-slate-100 w-3/4"
+                />
+            </label>
+        </div>
+        <div class="form-control w-full">
+            <label class="input-group w-full">
+                <span class="bg-slate-200 w-1/4">Status</span>
+                <select
+                    class="select select-bordered bg-slate-100 w-3/4"
+                    name="status"
+                >
+                    <option value="Pending">Pending</option>
+                    <option value="In Progress">In Progress</option>
+                    <option value="Completed">Completed</option>
+                </select>
+                <script>
+                    document.querySelector(
+                        `[value="{{ todo.status }}"]`
+                    ).selected = true;
+                </script>
+            </label>
+        </div>
+        <div class="form-control flex-row gap-4 justify-center my-8">
+            <a href="/" class="btn btn-info"> Home Page </a>
+            <a href="{% url 'todo_detail' todo.id%}" class="btn btn-warning">
+                Show
+            </a>
+            <a href="{% url 'todo_delete' todo.id%}" class="btn btn-error">
+                Delete
+            </a>
+            <button class="btn btn-accent" type="submit">Save</button>
+        </div>
+    </form>
+</div>
+{% endblock %}
