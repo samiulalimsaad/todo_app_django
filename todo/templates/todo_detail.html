@@ -1,0 +1,43 @@
+{% extends 'base.html' %} {% block content %}
+<div class="w-3/4 mx-auto grid place-items-center h-[93vh]">
+    <div class="w-3/4 space-y-4">
+        <div class="form-control w-full">
+            <label class="input-group w-full">
+                <span class="bg-slate-200 w-1/4">Id</span>
+                <span class="input bg-slate-100 w-3/4">{{todo.id}} </span>
+            </label>
+        </div>
+        <div class="form-control w-full">
+            <label class="input-group w-full">
+                <span class="bg-slate-200 w-1/4">Title</span>
+                <span class="input bg-slate-100 w-3/4">{{todo.title}} </span>
+            </label>
+        </div>
+        <div class="form-control w-full">
+            <label class="input-group w-full">
+                <span class="bg-slate-200 w-1/4">Description</span>
+                <span class="input bg-slate-100 w-3/4"
+                    >{{todo.description}}
+                </span>
+            </label>
+        </div>
+        <div class="form-control w-full">
+            <label class="input-group w-full">
+                <span class="bg-slate-200 w-1/4">Due Date</span>
+                <span class="input bg-slate-100 w-3/4">{{todo.due_date}} </span>
+            </label>
+        </div>
+        <div class="form-control w-full">
+            <label class="input-group w-full">
+                <span class="bg-slate-200 w-1/4">Status</span>
+                <span class="input bg-slate-100 w-3/4">{{todo.status}} </span>
+            </label>
+        </div>
+        <div class="form-control flex-row gap-4 justify-center my-8">
+            <a href="/" class="btn btn-info"> Home Page </a>
+            <a href="/todo_edit" class="btn btn-warning"> Edit </a>
+            <a href="/" class="btn btn-error"> Delete </a>
+        </div>
+    </div>
+</div>
+{% endblock %}
