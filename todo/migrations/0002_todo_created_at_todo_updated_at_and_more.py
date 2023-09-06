@@ -5,8 +5,6 @@ import django.utils.timezone
 
 
 class Migration(migrations.Migration):
-    atomic = False
-
     dependencies = [
         ("todo", "0001_initial"),
     ]

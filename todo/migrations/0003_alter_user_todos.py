@@ -5,8 +5,6 @@ import django.db.models.deletion
 
 
 class Migration(migrations.Migration):
-    atomic = False
-
     dependencies = [
         ("todo", "0002_todo_created_at_todo_updated_at_and_more"),
     ]
