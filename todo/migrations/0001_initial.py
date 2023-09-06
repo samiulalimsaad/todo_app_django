@@ -5,33 +5,65 @@ import django.db.models.deletion
 
 
 class Migration(migrations.Migration):
+    atomic = False
 
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='Todo',
+            name="Todo",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('title', models.CharField(max_length=200)),
-                ('description', models.CharField(max_length=200)),
-                ('due_date', models.DateTimeField(verbose_name='due date')),
-                ('status', models.CharField(choices=[('Pending', 'Pending'), ('Completed', 'Completed'), ('In Progress', 'In Progress')], default='Pending', max_length=20)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("title", models.CharField(max_length=200)),
+                ("description", models.CharField(max_length=200)),
+                ("due_date", models.DateTimeField(verbose_name="due date")),
+                (
+                    "status",
+                    models.CharField(
+                        choices=[
+                            ("Pending", "Pending"),
+                            ("Completed", "Completed"),
+                            ("In Progress", "In Progress"),
+                        ],
+                        default="Pending",
+                        max_length=20,
+                    ),
+                ),
             ],
         ),
         migrations.CreateModel(
-            name='User',
+            name="User",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('updated_at', models.DateTimeField(auto_created=True)),
-                ('created_at', models.DateTimeField(auto_created=True)),
-                ('name', models.CharField(max_length=200)),
-                ('email', models.CharField(max_length=200)),
-                ('password', models.CharField(max_length=200)),
-                ('todos', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='todo.todo')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("updated_at", models.DateTimeField(auto_created=True)),
+                ("created_at", models.DateTimeField(auto_created=True)),
+                ("name", models.CharField(max_length=200)),
+                ("email", models.CharField(max_length=200)),
+                ("password", models.CharField(max_length=200)),
+                (
+                    "todos",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE, to="todo.todo"
+                    ),
+                ),
             ],
         ),
     ]

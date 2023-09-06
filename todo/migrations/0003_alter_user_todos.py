@@ -5,15 +5,18 @@ import django.db.models.deletion
 
 
 class Migration(migrations.Migration):
+    atomic = False
 
     dependencies = [
-        ('todo', '0002_todo_created_at_todo_updated_at_and_more'),
+        ("todo", "0002_todo_created_at_todo_updated_at_and_more"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='user',
-            name='todos',
-            field=models.ForeignKey(null=True, on_delete=django.db.models.deletion.CASCADE, to='todo.todo'),
+            model_name="user",
+            name="todos",
+            field=models.ForeignKey(
+                null=True, on_delete=django.db.models.deletion.CASCADE, to="todo.todo"
+            ),
         ),
     ]
